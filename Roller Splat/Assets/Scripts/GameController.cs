@@ -2,24 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    public static GameController singleton;
+    public static GameController singleton; 
+    public Text winText;
+
+    AudioSource audiosource;
+    int lvl;
 
     private Ground[] allSquares;
 
     // Start is called before the first frame update
     void Start()
     {
-        SetupLevel();
-        
+        audiosource = GetComponent<AudioSource>();
+        SetupLevel(); 
     }
-
-    private void SetupLevel()
-    {
+     
+    public void SetupLevel()
+    { 
         allSquares = FindObjectsOfType<Ground>();
     }
+
 
     // Update is called once per frame
     void Update()
@@ -29,7 +35,8 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
-        if(singleton == null)
+        winText.CrossFadeAlpha(0, 0f, false);
+        if (singleton == null)
         {
             singleton = this;
          
@@ -64,19 +71,57 @@ public class GameController : MonoBehaviour
         }
 
         if (isFinished)
-        {
-            NextLevel();
+        { 
+            winText.CrossFadeAlpha(1, 2.0f, false);
+            audiosource.Play();
+            LevelSave();
+            StartCoroutine(WaitForNextScene());
+            
         }
     }
 
     private void NextLevel() { 
-        if(SceneManager.GetActiveScene().buildIndex == 1) { 
+        if(SceneManager.GetActiveScene().buildIndex == 10) { 
     
         SceneManager.LoadScene(0);
     } else
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
+    }
+
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    IEnumerator WaitForNextScene()
+    {
+        yield return new WaitForSeconds(2f);
+        NextLevel();
+    }
+
+    void LevelSave()
+    {
+        lvl = PlayerPrefs.GetInt("lvl");
+
+        if (lvl >= 10 || lvl < 1)
+        {
+            lvl = 2;
+            PlayerPrefs.SetInt("lvl", lvl);
+        }
+        else
+        { 
+            lvl++;
+            PlayerPrefs.SetInt("lvl", lvl);
+
+        }
+
     }
 
 }

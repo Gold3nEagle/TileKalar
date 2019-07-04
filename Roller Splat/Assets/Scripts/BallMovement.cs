@@ -1,29 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class BallMovement : MonoBehaviour
 {
-
-    
+     
     public float ballSpeed;
      
-    private bool isMoving;
+     public bool isMoving;
     private Color squareColor;
 
     Rigidbody ballRB;
     int minSwipeRecognition = 500;
     Vector3 moveDirection, collisionPosition;
     Vector2 swipePositionLastFrame, swipePositionCurrentFrame, currentSwipe;
+    
 
-
+    public GameController controller;
 
     //Initializing the ball's Rigidbody component, generating a random color, setting the color on the ball.
     void Start()
-    {
+    { 
         ballRB = GetComponent<Rigidbody>();
         squareColor = Random.ColorHSV(0, 1);
-        GetComponent<MeshRenderer>().material.color = squareColor;
+        GetComponent<MeshRenderer>().material.color = squareColor; 
     }
      
     //Calling the update method for a fixed time in one frame.
@@ -50,8 +51,9 @@ public class BallMovement : MonoBehaviour
     {
         //If the ball is allowed to move, multiply the speed we have set to its direction.
         if (isMoving)
-        {
+        { 
             ballRB.velocity = ballSpeed * moveDirection;
+           
         }
 
         //Create a small collider on the ball to use as a detector for uncolored groundSquares to color the ones we pass on.
@@ -73,7 +75,7 @@ public class BallMovement : MonoBehaviour
         {
 
             if (Vector3.Distance(transform.position, collisionPosition) < 1)
-            {
+            { 
                 isMoving = false;
                 moveDirection = Vector3.zero;
                 collisionPosition = Vector3.zero;
@@ -89,7 +91,8 @@ public class BallMovement : MonoBehaviour
             if (swipePositionLastFrame != Vector2.zero)
             {
                 currentSwipe = swipePositionCurrentFrame - swipePositionLastFrame;
-
+                
+               
                 if (currentSwipe.sqrMagnitude < minSwipeRecognition)
                 {
                     return;
@@ -102,10 +105,11 @@ public class BallMovement : MonoBehaviour
                 {
                     if (currentSwipe.y > 0)
                     {
-                        SetDestination(Vector3.forward);
+                        SetDestination(Vector3.forward); 
                     }
-                    else
-                        SetDestination(Vector3.back);
+                    else {  
+                    SetDestination(Vector3.back); 
+                    }
 
                 }
 
@@ -114,12 +118,13 @@ public class BallMovement : MonoBehaviour
                 {
                     if (currentSwipe.x > 0)
                     {
-                        SetDestination(Vector3.right);
+                        SetDestination(Vector3.right); 
                     }
                     else
-                        SetDestination(Vector3.left);
-
-                }
+                    {
+                        SetDestination(Vector3.left); 
+                    }
+                    }
             }
 
             swipePositionLastFrame = swipePositionCurrentFrame;
@@ -128,9 +133,9 @@ public class BallMovement : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
+            
             swipePositionLastFrame = Vector2.zero;
             currentSwipe = Vector2.zero;
         }
-    }
-
+    } 
 }
