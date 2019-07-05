@@ -7,10 +7,13 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     public static GameController singleton; 
-    public Text winText;
+    public Text winText; 
 
     AudioSource audiosource;
     int lvl;
+
+    public GameObject[] toDisableOnEnd;
+    public GameObject gameEnd;
 
     private Ground[] allSquares;
 
@@ -75,16 +78,20 @@ public class GameController : MonoBehaviour
             winText.CrossFadeAlpha(1, 2.0f, false);
             audiosource.Play();
             LevelSave();
-            StartCoroutine(WaitForNextScene());
-            
+            StartCoroutine(WaitForNextScene()); 
         }
     }
 
     private void NextLevel() { 
-        if(SceneManager.GetActiveScene().buildIndex == 13) { 
-    
-        SceneManager.LoadScene(0);
-    } else
+        if(SceneManager.GetActiveScene().buildIndex == 20) { 
+     
+            for(int i = 0; i < toDisableOnEnd.Length; i++)
+            {
+                toDisableOnEnd[i].SetActive(false); 
+            } 
+            gameEnd.SetActive(true);
+            StartCoroutine(EndGame()); 
+        } else
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
@@ -104,22 +111,28 @@ public class GameController : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         NextLevel();
+        
     }
 
+    IEnumerator EndGame()
+    {
+        yield return new WaitForSeconds(5f);
+        SceneManager.LoadScene(0);
+    }
     void LevelSave()
     {
         lvl = PlayerPrefs.GetInt("lvl");
 
-        if (lvl >= 10 || lvl < 1)
+        if (lvl >= 20 || lvl < 1)
         {
             lvl = 2;
             PlayerPrefs.SetInt("lvl", lvl);
         }
+
         else
-        { 
+        {
             lvl++;
             PlayerPrefs.SetInt("lvl", lvl);
-
         }
 
     }
