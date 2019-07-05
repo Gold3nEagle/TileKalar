@@ -2,20 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
 
-    public GameObject continueButton;
-    int savedLevel;
+    public GameObject continueButton; 
+
+    int savedLevel; 
+
+
+ 
 
     // Start is called before the first frame update
     void Start()
-    {
-        DontDestroyOnLoad(gameObject);
+    { 
         ContinueGame();
     } 
-
+     
     public void StartGame()
     {
         PlayerPrefs.SetInt("lvl", 0);
@@ -40,5 +44,7 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene(savedLevel);
     }
+
+    
 
 }

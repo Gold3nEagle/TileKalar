@@ -4304,6 +4304,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball
       objectReference: {fileID: 0}
+    - target: {fileID: 3023223701806839470, guid: fff6628010d9bd044a05c86000bbd45c,
+        type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 2046147306}
     - target: {fileID: 3023223702132489102, guid: fff6628010d9bd044a05c86000bbd45c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4359,11 +4364,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3023223701806839470, guid: fff6628010d9bd044a05c86000bbd45c,
-        type: 3}
-      propertyPath: controller
-      value: 
-      objectReference: {fileID: 2046147306}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fff6628010d9bd044a05c86000bbd45c, type: 3}
 --- !u!1001 &5956208332597725966
@@ -4502,6 +4502,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameController
       objectReference: {fileID: 0}
+    - target: {fileID: 6430207077141260664, guid: df8ad64a574dfd046a478f827d38fd3c,
+        type: 3}
+      propertyPath: BM
+      value: 
+      objectReference: {fileID: 450861873}
+    - target: {fileID: 6430207077141260664, guid: df8ad64a574dfd046a478f827d38fd3c,
+        type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 105289228}
+    - target: {fileID: 6430207077141260664, guid: df8ad64a574dfd046a478f827d38fd3c,
+        type: 3}
+      propertyPath: textObj
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6430207077141260664, guid: df8ad64a574dfd046a478f827d38fd3c,
+        type: 3}
+      propertyPath: winText
+      value: 
+      objectReference: {fileID: 2022437731}
     - target: {fileID: 6430207077141260665, guid: df8ad64a574dfd046a478f827d38fd3c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4557,26 +4577,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6430207077141260664, guid: df8ad64a574dfd046a478f827d38fd3c,
-        type: 3}
-      propertyPath: BM
-      value: 
-      objectReference: {fileID: 450861873}
-    - target: {fileID: 6430207077141260664, guid: df8ad64a574dfd046a478f827d38fd3c,
-        type: 3}
-      propertyPath: audioSource
-      value: 
-      objectReference: {fileID: 105289228}
-    - target: {fileID: 6430207077141260664, guid: df8ad64a574dfd046a478f827d38fd3c,
-        type: 3}
-      propertyPath: textObj
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6430207077141260664, guid: df8ad64a574dfd046a478f827d38fd3c,
-        type: 3}
-      propertyPath: winText
-      value: 
-      objectReference: {fileID: 2022437731}
     m_RemovedComponents:
     - {fileID: 6430207077141260670, guid: df8ad64a574dfd046a478f827d38fd3c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: df8ad64a574dfd046a478f827d38fd3c, type: 3}

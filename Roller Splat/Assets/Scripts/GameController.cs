@@ -81,7 +81,7 @@ public class GameController : MonoBehaviour
     }
 
     private void NextLevel() { 
-        if(SceneManager.GetActiveScene().buildIndex == 10) { 
+        if(SceneManager.GetActiveScene().buildIndex == 13) { 
     
         SceneManager.LoadScene(0);
     } else
