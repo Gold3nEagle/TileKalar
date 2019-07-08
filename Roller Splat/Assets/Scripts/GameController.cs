@@ -83,7 +83,7 @@ public class GameController : MonoBehaviour
     }
 
     private void NextLevel() { 
-        if(SceneManager.GetActiveScene().buildIndex == 20) { 
+        if(SceneManager.GetActiveScene().buildIndex == 30) { 
      
             for(int i = 0; i < toDisableOnEnd.Length; i++)
             {
@@ -123,7 +123,7 @@ public class GameController : MonoBehaviour
     {
         lvl = PlayerPrefs.GetInt("lvl");
 
-        if (lvl >= 20 || lvl < 1)
+        if (lvl >= 30 || lvl < 1)
         {
             lvl = 2;
             PlayerPrefs.SetInt("lvl", lvl);
@@ -138,3 +138,5 @@ public class GameController : MonoBehaviour
     }
 
 }
+
+// 4 + 5 + 9 + 10 + 13 + 19 + 24 + 25 + 30

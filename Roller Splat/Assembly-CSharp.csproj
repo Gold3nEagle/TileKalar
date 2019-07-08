@@ -295,6 +295,9 @@
     <Reference Include="Firebase.App">
       <HintPath>E:/Development/Unity/Git/TileKalar/Roller Splat/Assets/Firebase/Plugins/Firebase.App.dll</HintPath>
     </Reference>
+    <Reference Include="Firebase.Messaging">
+      <HintPath>E:/Development/Unity/Git/TileKalar/Roller Splat/Assets/Firebase/Plugins/Firebase.Messaging.dll</HintPath>
+    </Reference>
     <Reference Include="Firebase.Platform">
       <HintPath>E:/Development/Unity/Git/TileKalar/Roller Splat/Assets/Firebase/Plugins/Firebase.Platform.dll</HintPath>
     </Reference>
@@ -318,9 +321,6 @@
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>E:/Development/Unity/Git/TileKalar/Roller Splat/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
-    </Reference>
-    <Reference Include="Firebase.Messaging">
-      <HintPath>E:/Development/Unity/Git/TileKalar/Roller Splat/Assets/Firebase/Plugins/Firebase.Messaging.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>E:/Program Files/Unity/Editor/2019.1.6f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
