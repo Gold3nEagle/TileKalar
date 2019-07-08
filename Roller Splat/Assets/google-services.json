@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "523925631071",
+    "firebase_url": "https://tilekalar.firebaseio.com",
+    "project_id": "tilekalar",
+    "storage_bucket": "tilekalar.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:523925631071:android:ff878c1ef6aec26c",
+        "android_client_info": {
+          "package_name": "com.goldeneagle.tilekalar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "523925631071-oivtbj04qajsk8t3r1e3pfjq17ojqjmf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCj7hP21uTfYjoa0pBTKCVnF0XAkUEis2A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "523925631071-oivtbj04qajsk8t3r1e3pfjq17ojqjmf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
