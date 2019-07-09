@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class simply checks the color of the ground and if it was colored by the ball or not.
+//And then sets the color accordingly
 public class Ground : MonoBehaviour
 {
 

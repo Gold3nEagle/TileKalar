@@ -7,17 +7,15 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     public static GameController singleton; 
-    public Text winText; 
-
-    AudioSource audiosource;
-    int lvl;
-
+    public Text winText;
     public GameObject[] toDisableOnEnd;
     public GameObject gameEnd;
 
-    private Ground[] allSquares;
+    AudioSource audiosource;
+    int lvl; 
 
-    // Start is called before the first frame update
+    private Ground[] allSquares;
+     
     void Start()
     {
         audiosource = GetComponent<AudioSource>();
@@ -29,13 +27,8 @@ public class GameController : MonoBehaviour
         allSquares = FindObjectsOfType<Ground>();
     }
 
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    //Before starting the scene check if the GameController GameObject exists,
+    //and if there is a duplicate then destroy it and continue on duplicating the one we have.
     private void Awake()
     {
         winText.CrossFadeAlpha(0, 0f, false);
@@ -60,6 +53,7 @@ public class GameController : MonoBehaviour
         SetupLevel();
     }
     
+    //A continuous checker to check if all existing tiles were colored successfully by the player.
     public void CheckFinished()
     {
         bool isFinished = true;
@@ -73,6 +67,8 @@ public class GameController : MonoBehaviour
             }
         }
 
+        //If the current level is finished, show the player that they've won,
+        //save progress and move to the next level
         if (isFinished)
         { 
             winText.CrossFadeAlpha(1, 2.0f, false);
@@ -81,8 +77,10 @@ public class GameController : MonoBehaviour
             StartCoroutine(WaitForNextScene()); 
         }
     }
-
-    private void NextLevel() { 
+    
+    private void NextLevel() {
+        //If we've reached the last level,
+        //disable all unnecessary GameObjects and enable the End text. Otherwise, go on to the next level
         if(SceneManager.GetActiveScene().buildIndex == 30) { 
      
             for(int i = 0; i < toDisableOnEnd.Length; i++)
@@ -114,11 +112,14 @@ public class GameController : MonoBehaviour
         
     }
 
+    //Take us to the main menu if the whole game was finished.
     IEnumerator EndGame()
     {
         yield return new WaitForSeconds(5f);
         SceneManager.LoadScene(0);
     }
+
+    //Save Progress
     void LevelSave()
     {
         lvl = PlayerPrefs.GetInt("lvl");
@@ -133,10 +134,7 @@ public class GameController : MonoBehaviour
         {
             lvl++;
             PlayerPrefs.SetInt("lvl", lvl);
-        }
-
-    }
-
+        } 
+    } 
 }
-
-// 4 + 5 + 9 + 10 + 13 + 19 + 24 + 25 + 30
+ 

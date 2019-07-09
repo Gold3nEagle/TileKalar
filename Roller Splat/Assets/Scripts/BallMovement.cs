@@ -7,8 +7,9 @@ public class BallMovement : MonoBehaviour
 {
      
     public float ballSpeed;
-     
-     public bool isMoving;
+    public bool isMoving;
+    public GameController controller;
+
     private Color squareColor;
 
     Rigidbody ballRB;
@@ -17,7 +18,7 @@ public class BallMovement : MonoBehaviour
     Vector2 swipePositionLastFrame, swipePositionCurrentFrame, currentSwipe;
     
 
-    public GameController controller;
+    
 
     //Initializing the ball's Rigidbody component, generating a random color, setting the color on the ball.
     void Start()
@@ -70,7 +71,7 @@ public class BallMovement : MonoBehaviour
             i++;
         }
 
-        // Checking if we have reached our destination.
+        // Checking if we have reached our destination. Then set isMoving to false so we can move the ball again.
         if (collisionPosition != Vector3.zero)
         {
 
@@ -82,17 +83,20 @@ public class BallMovement : MonoBehaviour
             }
         }
 
+        //If isMoving is True and we try to move the ball to an another direction, it shouldn't let us, so it returns nothing.
         if (isMoving) { return; }
 
+        //Once the user tabs on the screen to swipe we take their finger's first X and Y position.
         if (Input.GetMouseButton(0))
         {
             swipePositionCurrentFrame = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
 
+            //Did the player's finger move after the initial tab? Then set the destination of mentioned swipe.
             if (swipePositionLastFrame != Vector2.zero)
             {
                 currentSwipe = swipePositionCurrentFrame - swipePositionLastFrame;
                 
-               
+               //Was it an accidental tab? Then return nothing.
                 if (currentSwipe.sqrMagnitude < minSwipeRecognition)
                 {
                     return;
@@ -100,7 +104,7 @@ public class BallMovement : MonoBehaviour
 
                 currentSwipe.Normalize();
 
-                //Swiped up or down
+                //User swiped up or down
                 if (currentSwipe.x > -0.5f && currentSwipe.x < 0.5f)
                 {
                     if (currentSwipe.y > 0)
@@ -113,7 +117,7 @@ public class BallMovement : MonoBehaviour
 
                 }
 
-                //Swiped left or right
+                //User swiped left or right
                 if (currentSwipe.y > -0.5 && currentSwipe.y < 0.5)
                 {
                     if (currentSwipe.x > 0)
@@ -131,6 +135,7 @@ public class BallMovement : MonoBehaviour
 
         }
 
+        //If the player lifts their finger up, don't register anything and set the variables to zero.
         if (Input.GetMouseButtonUp(0))
         {
             

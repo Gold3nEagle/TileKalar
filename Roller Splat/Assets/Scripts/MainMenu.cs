@@ -9,12 +9,9 @@ public class MainMenu : MonoBehaviour
 
     public GameObject continueButton; 
 
-    int savedLevel; 
+    int savedLevel;  
 
-
- 
-
-    // Start is called before the first frame update
+     
     void Start()
     { 
         ContinueGame();
@@ -31,6 +28,7 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
+    //If the player played before and reached to a stage greater than the first one, display the Continue button
     public void ContinueGame()
     {
          savedLevel = PlayerPrefs.GetInt("lvl");
@@ -39,7 +37,8 @@ public class MainMenu : MonoBehaviour
             continueButton.SetActive(true);
         }  
     }
-
+    
+    
     public void ContinueButton()
     {
         SceneManager.LoadScene(savedLevel);

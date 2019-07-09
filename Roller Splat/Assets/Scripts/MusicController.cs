@@ -14,6 +14,7 @@ public class MusicController : MonoBehaviour
         audioSource.Play(); 
     }
 
+    //If there are more than one instance of this object running, destroy this one and let the other one run.
     private void Awake()
     {
         GameObject[] objs = GameObject.FindGameObjectsWithTag("music");
